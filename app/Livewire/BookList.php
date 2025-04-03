@@ -8,6 +8,8 @@ use Livewire\Attributes\Title;
 
 class BookList extends Component
 {
+    public $term = '';
+
     public function delete(Book $book)
     {
         $book->delete();
@@ -16,6 +18,12 @@ class BookList extends Component
     #[Title('book-list')]
     public function render()
     {
+        if ($this->term) {
+            return view('livewire.book-list', [
+                'books' => Book::where('title', 'LIKE', "%{$this->term}%")->get(),
+            ]);
+        }
+
         return view('livewire.book-list', [
             'books' => Book::all()
         ]);
