@@ -6,9 +6,19 @@
         </div>
     </header>
 
+    <div>
+        <p>Count: {{$count}}</p>
+        <button wire:click="increment(1)">+1</button>
+        <button wire:click="increment(2)">+2</button>
+    </div>
+
     <ul class="list">
         @foreach($books as $book)
             <li wire:key="{{$book->id}}">
+                <button
+                    wire:click="delete({{$book->id}})"
+                >Delete
+                </button>
                 <h3>{{$book->title}}</h3>
                 <h4>{{$book->author}}</h4>
                 <p>Rating: {{$book->rating}}/10</p>
