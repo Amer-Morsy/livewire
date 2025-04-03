@@ -8,8 +8,6 @@ use Livewire\Attributes\Title;
 
 class BookList extends Component
 {
-    public $name = 'mario';
-
     public function delete(Book $book)
     {
         $book->delete();
